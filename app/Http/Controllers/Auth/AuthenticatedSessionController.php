@@ -29,21 +29,21 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        // $recaptcha = $request->input('g-recaptcha-response');
+        $recaptcha = $request->input('g-recaptcha-response');
 
-        // if (is_null($recaptcha)) {
-        //     $request->session()->flash('message', "Please confirm you are not a robot");
-        //     return redirect()->back();
-        // }
+        if (is_null($recaptcha)) {
+            $request->session()->flash('message', "Please confirm you are not a robot");
+            return redirect()->back();
+        }
 
-        // $response = Http::get("https://www.google.com/recaptcha/api/siteverify", [
-        //     'secret' => config('services.recaptcha.secret'),
-        //     'response' => $recaptcha
-        // ]);
+        $response = Http::get("https://www.google.com/recaptcha/api/siteverify", [
+            'secret' => config('services.recaptcha.secret'),
+            'response' => $recaptcha
+        ]);
 
-        // $result = $response->json();
+        $result = $response->json();
 
-        // if ($response->successful() && $result['success'] == true) {
+        if ($response->successful() && $result['success'] == true) {
             $request->authenticate();
 
             $request->session()->regenerate();
@@ -53,10 +53,10 @@ class AuthenticatedSessionController extends Controller
             }
 
             return redirect()->intended(RouteServiceProvider::HOME);
-        // } else {
-        //     $request->session()->flash('message', "Please confirm you are not a robot");
-        //     return redirect()->back();
-        // }
+        } else {
+            $request->session()->flash('message', "Please confirm you are not a robot");
+            return redirect()->back();
+        }
     }
 
     /**
