@@ -1,0 +1,44 @@
+{
+    "plans": [
+        {
+            "name": "Starter",
+            "minimum": 50,
+            "maximum": 1000,
+            "roi": 0.04,
+            "duration": 48,
+            "referralPercentage": 0.04
+        },
+        {
+            "name": "Trade",
+            "minimum": 1000,
+            "maximum": 10000,
+            "roi": 0.05,
+            "duration": 96,
+            "referralPercentage": 0.03
+        },
+        {
+            "name": "Standard",
+            "minimum": 10000,
+            "maximum": 20000,
+            "roi": 0.06,
+            "duration": 144,
+            "referralPercentage": 0.02
+        },
+        {
+            "name": "Premium",
+            "minimum": 30000,
+            "maximum": 40000,
+            "roi": 0.07,
+            "duration": 192,
+            "referralPercentage": 0.02
+        },
+        {
+            "name": "Stakeholders",
+            "minimum": 100000,
+            "maximum": "Unlimited",
+            "roi": 0.2,
+            "duration": 48,
+            "referralPercentage": 0.02
+        }
+    ]
+}
