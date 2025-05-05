@@ -3,7 +3,7 @@
 
 <head>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -43,6 +43,17 @@
 </head>
 
 <body>
+    <!-- ============================================================== -->
+    <!-- GTranslate widget -->
+    <!-- ============================================================== -->
+    <div class="gtranslate_wrapper"></div>
+    <script>
+        window.gtranslateSettings = {
+            "default_language": "en",
+            "wrapper_selector": ".gtranslate_wrapper"
+        }
+    </script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
 
     <!-- Start Preloader Area -->
     <div class="preloader" style="display: none;">
