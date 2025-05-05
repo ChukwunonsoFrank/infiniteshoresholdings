@@ -8,10 +8,10 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-    <title>Amtrustcapitals - Dashboard</title>
+    <title>InfiniteShoresHoldings - Dashboard</title>
 
     <meta name="description"
-        content=" Amtrustcapitals provide expert financial guidance, investment solutions, and personalized strategies to help you achieve your goals. Partner with us for a secure and prosperous tomorrow.">
+        content=" InfiniteShoresHoldings provide expert financial guidance, investment solutions, and personalized strategies to help you achieve your goals. Partner with us for a secure and prosperous tomorrow.">
     <meta name="keywords"
         content="Financial services, Investment strategies, Wealth management, Retirement planning, Financial advice, Portfolio diversification, Tax planning, Asset allocation, Personal finance, Financial education">
 
