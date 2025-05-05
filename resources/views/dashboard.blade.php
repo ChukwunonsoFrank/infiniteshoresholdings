@@ -108,7 +108,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="4" class="text-center" style="font-size: 13px;">No transactions
+                                        <td colspan="6" class="text-center" style="font-size: 13px;">No transactions
                                             yet</td>
                                     </tr>
                                 @endif
