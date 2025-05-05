@@ -58,7 +58,7 @@ class RegisteredUserController extends Controller
             'marital_status' => ['required', 'string', 'max:255'],
             'account_type' => ['required', 'string', 'max:255'],
             'date_of_birth' => ['required', 'string', 'max:255'],
-            'password' => ['required', Rules\Password::defaults()],
+            'password' => ['required', Rules\Password::defaults(), 'confirmed'],
         ]);
         
         // $recaptcha = $request->input('g-recaptcha-response');

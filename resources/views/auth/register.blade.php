@@ -53,7 +53,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label>Date of Birth</label>
-                                <input type="date" class="form-control" placeholder="dd/mm/yy" name="date_of_birth"
+                                <input type="date" class="form-control" placeholder="dd/mm/yy" name="date_of_birth" value="{{ old('date_of_birth') }}"
                                     required>
                                 <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2" />
                             </div>
@@ -62,7 +62,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label>Country</label>
-                                <input type="text" class="form-control" name="country" required>
+                                <input type="text" class="form-control" name="country" value="{{ old('country') }}" required>
                                 <x-input-error :messages="$errors->get('country')" class="mt-2" />
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label>Phone Number</label>
-                                <input type="text" class="form-control" name="phone" required>
+                                <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" required>
                                 <x-input-error :messages="$errors->get('phone')" class="mt-2" />
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label>Address</label>
-                                <input type="text" class="form-control" name="address" required>
+                                <input type="text" class="form-control" name="address" value="{{ old('address') }}" required>
                                 <x-input-error :messages="$errors->get('address')" class="mt-2" />
                             </div>
                         </div>
@@ -132,8 +132,16 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" class="form-control" name="password" required>
+                                <input type="password" class="form-control" name="password" value="{{ old('password') }}" required>
                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control" name="password_confirmation" required>
+                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                             </div>
                         </div>
 
