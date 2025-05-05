@@ -108,6 +108,29 @@
 
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
+                                <label>Account Type</label>
+                                <select style="display: none;" name="account_type">
+                                    <option value="Savings">Savings</option>
+                                    <option value="Current">Current</option>
+                                    <option value="Business">Business</option>
+                                    <option value="Offshore">Offshore</option>
+                                    <option value="Personalized">Personalized</option>
+                                </select>
+                                <div class="nice-select" tabindex="0"><span class="current">Savings</span>
+                                    <ul class="list">
+                                        <li data-value="Savings" class="option selected">Savings</li>
+                                        <li data-value="Current" class="option">Current</li>
+                                        <li data-value="Business" class="option">Business</li>
+                                        <li data-value="Offshore" class="option">Offshore</li>
+                                        <li data-value="Personalized" class="option">Personalized</li>
+                                    </ul>
+                                </div>
+                                <x-input-error :messages="$errors->get('account_type')" class="mt-2" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
                                 <label>Password</label>
                                 <input type="password" class="form-control" name="password" required>
                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
