@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deposit;
+use App\Models\Transfer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,9 +21,12 @@ class DashboardController extends Controller
             return redirect('/login')->with('message', 'Your account has been suspended due to an issue! Please reach out support to resolve this.');
         }
         
-        $pending_deposits = Deposit::where('user_id', auth()->user()->id)->where('confirmation_status', 'pending')->get();
+        $deposits = Deposit::where('user_id', auth()->user()->id)->get();
+        $transfers = Transfer::where('user_id', auth()->user()->id)->get();
+        
         return view('dashboard', [
-            'pending_deposits' => $pending_deposits
+            'deposits' => $deposits,
+            'transfers' => $transfers,
         ]);
     }
 }
