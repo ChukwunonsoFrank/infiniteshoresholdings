@@ -34,7 +34,13 @@
                                     </div>
 
                                     <div class="mb-4">
-                                        <label id="amount_label" for="amount" class="form-label">Receipient Name</label>
+                                        <label id="amount_label" for="amount" class="form-label">Account Type</label>
+                                        <input type="text" class="form-control" id="amount" name="account_type"
+                                            placeholder="">
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label id="amount_label" for="amount" class="form-label">Account Name</label>
                                         <input type="text" class="form-control" id="amount" name="receipient_name"
                                             placeholder="">
                                     </div>

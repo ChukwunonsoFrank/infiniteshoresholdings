@@ -28,19 +28,17 @@
                                      <div class="button-wrapper">
                                          <label for="upload" class="btn btn-primary me-2 mb-4"
                                              tabindex="0">
-                                             <span class="d-none d-sm-block">Select Photo</span>
-                                             <i class="bx bx-upload d-block d-sm-none"></i>
+                                             <span style="font-size: 12px;">Select Photo</span>
                                              <input type="file" name="profile_photo" id="upload"
                                                  class="account-file-input"
                                                  accept="image/png, image/jpeg" hidden="">
                                          </label>
                                          <button name="upload_photo" type="submit"
                                              class="btn btn-outline-secondary account-image-reset mb-4">
-                                             <i class="bx bx-reset d-block d-sm-none"></i>
-                                             <span class="d-none d-sm-block">Submit</span>
+                                             <span>Submit</span>
                                          </button>
  
-                                         <p class="text-muted mb-0">Allowed JPEG, JPG or PNG. Max size of
+                                         <p class="text-muted mb-0" style="font-size: 12px;">Allowed JPEG, JPG or PNG. Max size of
                                              800K</p>
                                      </div>
                                  </div>
