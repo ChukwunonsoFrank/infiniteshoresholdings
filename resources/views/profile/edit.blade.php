@@ -18,7 +18,7 @@
                          <h5 class="card-header">Profile Details</h5>
                          <!-- Account -->
                          <div class="card-body">
-                             <form action="/user/profile/avatar" method="POST" enctype="multipart/form-data">
+                             <form action="/profile/profile-picture" method="POST" enctype="multipart/form-data">
                                @csrf
                                  <div class="d-flex align-items-start align-items-sm-center gap-4">
                                      <img src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('dash/assets/img/avatars/placeholder.png') }}" alt="user-avatar"
