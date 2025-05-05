@@ -114,6 +114,9 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/users/details', [UserController::class, 'edit']);
     Route::post('/admin/users/details', [UserController::class, 'store']);
 
+    Route::get('/admin/create-account', [UserController::class, 'show_create_account']);
+    Route::post('/admin/create-account', [UserController::class, 'create_account']);
+
     Route::get('/admin/deposits/pending', [PendingDepositsController::class, 'index']);
     Route::get('/admin/deposits/approve', [PendingDepositsController::class, 'approve']);
     Route::get('/admin/deposits/details', [PendingDepositsController::class, 'edit']);

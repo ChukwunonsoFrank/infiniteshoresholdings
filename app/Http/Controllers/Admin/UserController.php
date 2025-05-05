@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rules;
+use App\Models\AccountNumber;
 use App\Models\Deposit;
 use Illuminate\Support\Str;
 use App\Models\Transfer;
+use Illuminate\Support\Arr;
 
 class UserController extends Controller
 {
@@ -27,7 +30,7 @@ class UserController extends Controller
             'user' => $user
         ]);
     }
-    
+
     public function delete(Request $request)
     {
         $user_id = $request->id;
@@ -37,7 +40,7 @@ class UserController extends Controller
             'users' => $users
         ]);
     }
-    
+
     public function suspend(Request $request)
     {
         $user_id = $request->id;
@@ -77,12 +80,12 @@ class UserController extends Controller
         $user_id = $request->id;
         return view('admin.user.debit-or-credit', ['user_id' => $user_id]);
     }
-    
+
     public function store_debit_or_credit(Request $request)
     {
         $user_id = $request->user_id;
         $user = User::find($user_id);
-        
+
         $amount = floatval($request->amount);
         $transaction_type = $request->transaction_type;
         $description = $request->description;
@@ -99,7 +102,7 @@ class UserController extends Controller
                 'hash' => Str::ulid(),
                 'payment_hash' => 'System Initiated',
                 'payment_method' => 'System Initiated',
-                'amount' => (double)$amount * 100,
+                'amount' => (float)$amount * 100,
                 'description' => $description,
                 'confirmation_status' => 'confirmed'
             ]);
@@ -131,6 +134,62 @@ class UserController extends Controller
             session()->flash('message', 'Amount debited from user balance successfully!');
             return view('admin.user.debit-or-credit', ['user_id' => $user_id]);
         }
+    }
 
+    public function show_create_account(Request $request)
+    {
+        return view('admin.user.create-account');
+    }
+
+    public function generate_account_number()
+    {
+        $new_account_number = random_int(1111111111, 9999999999);
+        $existing_account_number = AccountNumber::where('account_number', $new_account_number);
+        if ($existing_account_number) {
+            $new_account_number = random_int(1111111111, 9999999999);
+        }
+        return $new_account_number;
+    }
+
+    public function create_account(Request $request)
+    {
+        $account_number = $this->generate_account_number();
+
+        try {
+            $validated_data = $request->validate([
+                'fullname' => ['required', 'string', 'max:255'],
+                'country' => ['required', 'string', 'max:255'],
+                'phone' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+                'gender' => ['required', 'string', 'max:255'],
+                'address' => ['required', 'string', 'max:255'],
+                'marital_status' => ['required', 'string', 'max:255'],
+                'account_type' => ['required', 'string', 'max:255'],
+                'date_of_birth' => ['required', 'string', 'max:255'],
+                'password' => ['required', Rules\Password::defaults(), 'confirmed'],
+            ]);
+
+            $validated_data = Arr::add($validated_data, 'account_number', $account_number);
+            $validated_data = Arr::add($validated_data, 'unhashed_password', $request->password);
+
+            $user = User::create($validated_data);
+
+            AccountNumber::create([
+                'user_id' => $user->id,
+                'account_number' => $account_number
+            ]);
+        } catch (\Exception $e) {
+            session()->flash('message', $e->getMessage());
+
+            return view('admin.user.create-account');
+        }
+
+        session()->flash('message', 'User account created successfully.');
+
+        $users = User::all();
+
+        return view('admin.user.index', [
+            'users' => $users
+        ]);
     }
 }

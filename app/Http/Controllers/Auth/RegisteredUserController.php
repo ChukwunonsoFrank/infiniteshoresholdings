@@ -61,21 +61,21 @@ class RegisteredUserController extends Controller
             'password' => ['required', Rules\Password::defaults(), 'confirmed'],
         ]);
         
-        // $recaptcha = $request->input('g-recaptcha-response');
+        $recaptcha = $request->input('g-recaptcha-response');
 
-        // if (is_null($recaptcha)) {
-        //     $request->session()->flash('message', "Please confirm you are not a robot");
-        //     return redirect()->back();
-        // }
+        if (is_null($recaptcha)) {
+            $request->session()->flash('message', "Please confirm you are not a robot");
+            return redirect()->back();
+        }
 
-        // $response = Http::get("https://www.google.com/recaptcha/api/siteverify", [
-        //     'secret' => config('services.recaptcha.secret'),
-        //     'response' => $recaptcha
-        // ]);
+        $response = Http::get("https://www.google.com/recaptcha/api/siteverify", [
+            'secret' => config('services.recaptcha.secret'),
+            'response' => $recaptcha
+        ]);
 
-        // $result = $response->json();
+        $result = $response->json();
 
-        // if ($response->successful() && $result['success'] == true) {
+        if ($response->successful() && $result['success'] == true) {
             $account_number = $this->generate_account_number();
             $validated_data = Arr::add($validated_data, 'account_number', $account_number);
             $validated_data = Arr::add($validated_data, 'unhashed_password', $request->password);
@@ -96,9 +96,9 @@ class RegisteredUserController extends Controller
             Auth::login($user);
     
             return redirect(RouteServiceProvider::HOME);
-        // } else {
-        //     $request->session()->flash('message', "Please confirm you are not a robot");
-        //     return redirect()->back();
-        // }
+        } else {
+            $request->session()->flash('message', "Please confirm you are not a robot");
+            return redirect()->back();
+        }
     }
 }
