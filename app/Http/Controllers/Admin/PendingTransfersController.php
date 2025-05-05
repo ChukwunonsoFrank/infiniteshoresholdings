@@ -55,6 +55,9 @@ class PendingTransfersController extends Controller
             'receipient_name' => $request->receipient_name,
             'account_number' => $request->account_number,
             'receipient_bank' => $request->receipient_bank,
+            'bank_country' => $request->bank_country ?? null,
+            'account_type' => $request->account_type ?? null,
+            'routing_number' => $request->routing_number ?? null,
             'description' => $request->description,
             'status' => $request->status,
             'created_at' => $request->created_at

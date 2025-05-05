@@ -35,16 +35,20 @@
                                     </div>
 
                                     <div class="mb-4">
-                                        <label id="amount_label" for="amount" class="form-label">Receipient
-                                            Name</label>
+                                        <label id="amount_label" for="amount" class="form-label">Account Name</label>
                                         <input type="text" class="form-control" id="amount" name="receipient_name"
                                             placeholder="">
                                     </div>
 
                                     <div class="mb-4">
-                                        <label id="amount_label" for="amount" class="form-label">Receipient
-                                            Bank</label>
+                                        <label id="amount_label" for="amount" class="form-label">Bank Name</label>
                                         <input type="text" class="form-control" id="amount" name="receipient_bank"
+                                            placeholder="">
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label id="amount_label" for="amount" class="form-label">Routing Number</label>
+                                        <input type="text" class="form-control" id="amount" name="routing_number"
                                             placeholder="">
                                     </div>
 

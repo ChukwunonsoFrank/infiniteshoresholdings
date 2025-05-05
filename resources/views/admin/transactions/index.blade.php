@@ -21,8 +21,8 @@
                     <th>User</th>
                     <th>Amount</th>
                     <th>Type</th>
-                    <th>Method</th>
                     <th>Invoice</th>
+                    <th>Method</th>
                     <th>Status</th>
                     <th>Description</th>
                     <th>Date</th>
@@ -38,6 +38,7 @@
                       <td>${{ $transfer->amount / 100 }}</td>
                       <td>Bank Transfer</td>
                       <td>{{ $transfer->hash }}</td>
+                      <td>{{ $transfer->transfer_type }}</td>
                       <td>{{ $transfer->status }}</td>
                       <td>{{ $transfer->description }}</td>
                       <td>{{ $transfer->created_at }}</td>
@@ -58,8 +59,8 @@
                       <td>{{ $deposit->user->fullname }}</td>
                       <td>${{ $deposit->amount / 100 }}</td>
                       <td>Deposit</td>
-                      <td>{{ $deposit->payment_method }}</td>
                       <td>{{ $deposit->hash }}</td>
+                      <td>{{ $deposit->payment_method }}</td>
                       <td>{{ $deposit->confirmation_status }}</td>
                       <td>{{ $deposit->description }}</td>
                       <td>{{ $deposit->created_at }}</td>

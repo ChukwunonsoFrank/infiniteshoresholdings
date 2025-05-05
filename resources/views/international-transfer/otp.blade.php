@@ -30,6 +30,8 @@
                                         hidden="">
                                     <input name="swift_code" value="{{ $swift_code }}" required="" hidden="">
                                     <input name="description" value="{{ $description }}" required="" hidden="">
+                                    <input name="bank_country" value="{{ $bank_country }}" required="" hidden="">
+                                    <input name="account_type" value="{{ $account_type }}" required="" hidden="">
                                     <div class="mb-4">
                                         <p>An OTP Token was sent to your email address. Please provide the token below
                                             to continue your transaction.</p>

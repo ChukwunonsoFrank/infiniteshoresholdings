@@ -46,8 +46,14 @@
                                     </div>
 
                                     <div class="mb-4">
-                                        <label id="amount_label" for="amount" class="form-label">Receipient Bank</label>
+                                        <label id="amount_label" for="amount" class="form-label">Bank Name</label>
                                         <input type="text" class="form-control" id="amount" name="receipient_bank"
+                                            placeholder="">
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label id="amount_label" for="amount" class="form-label">Bank Country</label>
+                                        <input type="text" class="form-control" id="amount" name="bank_country"
                                             placeholder="">
                                     </div>
 

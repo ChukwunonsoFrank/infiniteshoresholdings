@@ -28,6 +28,7 @@
                                         hidden="">
                                     <input name="receipient_bank" value="{{ $receipient_bank }}" required=""
                                         hidden="">
+                                    <input name="routing_number" value="{{ $routing_number }}" required="" hidden="">
                                     <input name="description" value="{{ $description }}" required="" hidden="">
                                     <div class="mb-4">
                                         <p>An OTP Token was sent to your email address. Please provide the token below

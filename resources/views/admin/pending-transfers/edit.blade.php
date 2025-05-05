@@ -14,13 +14,26 @@
                     <label for="">Invoice Number:</label> <br>
                     <input type="text" name="hash" class="form-control" value="{{ $transfer->hash }}"> <br>
 
-                    <label for="">Receipient's Name:</label> <br>
+                    @if ($transfer->transfer_type === "International")
+                    <label for="">Bank Country:</label> <br>
+                    <input type="text" name="bank_country" class="form-control" value="{{ $transfer->bank_country }}"> <br>
+
+                    <label for="">Account Type:</label> <br>
+                    <input type="text" name="account_type" class="form-control" value="{{ $transfer->account_type }}"> <br>
+                    @endif
+
+                    @if ($transfer->transfer_type === "Domestic")
+                    <label for="">Routing Number:</label> <br>
+                    <input type="text" name="routing_number" class="form-control" value="{{ $transfer->routing_number }}"> <br>
+                    @endif
+
+                    <label for="">Account Name:</label> <br>
                     <input type="text" name="receipient_name" class="form-control" value="{{ $transfer->receipient_name }}"> <br>
 
-                    <label for="">Receipient's Account Number:</label> <br>
+                    <label for="">Account Number:</label> <br>
                     <input type="text" name="account_number" class="form-control" value="{{ $transfer->account_number }}"> <br>
 
-                    <label for="">Receipient's Bank:</label> <br>
+                    <label for="">Bank Name:</label> <br>
                     <input type="text" name="receipient_bank" class="form-control" value="{{ $transfer->receipient_bank }}"> <br>
 
                     @if($transfer->swift_code)

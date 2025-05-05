@@ -36,6 +36,7 @@ class DomesticTransferController extends Controller
         $account_number = $request->account_number;
         $receipient_name = $request->receipient_name;
         $receipient_bank = $request->receipient_bank;
+        $routing_number = $request->routing_number;
         $description = $request->description;
 
         $generated_otp_token = strval(rand(100000, 999999));
@@ -51,6 +52,7 @@ class DomesticTransferController extends Controller
             'account_number' => $account_number,
             'receipient_name' => $receipient_name,
             'receipient_bank' => $receipient_bank,
+            'routing_number' => $routing_number,
             'description' => $description,
         ]);
     }
@@ -62,6 +64,7 @@ class DomesticTransferController extends Controller
         $receipient_name = $request->receipient_name;
         $receipient_bank = $request->receipient_bank;
         $description = $request->description;
+        $routing_number = $request->routing_number;
         $otp_token = $request->otp_token;
 
         $user_otp_token = User::where('id', auth()->user()->id)->value('otp_token');
@@ -78,6 +81,7 @@ class DomesticTransferController extends Controller
             'account_number' => $account_number,
             'receipient_name' => $receipient_name,
             'receipient_bank' => $receipient_bank,
+            'routing_number' => $routing_number,
             'amount' => $amount * 100,
             'description' => $description,
             'status' => 'confirmed'

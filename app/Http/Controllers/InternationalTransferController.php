@@ -37,6 +37,8 @@ class InternationalTransferController extends Controller
         $receipient_bank = $request->receipient_bank;
         $swift_code = $request->swift_code;
         $description = $request->description;
+        $account_type = $request->account_type;
+        $bank_country = $request->bank_country;
 
         $generated_otp_token = strval(rand(100000, 999999));
 
@@ -53,6 +55,8 @@ class InternationalTransferController extends Controller
             'receipient_bank' => $receipient_bank,
             'swift_code' => $swift_code,
             'description' => $description,
+            'account_type' => $account_type,
+            'bank_country' => $bank_country,
         ]);
     }
 
@@ -64,6 +68,8 @@ class InternationalTransferController extends Controller
         $swift_code = $request->swift_code;
         $otp_token = $request->otp_token;
         $description = $request->description;
+        $account_type = $request->account_type;
+        $bank_country = $request->bank_country;
 
         $user_otp_token = User::where('id', auth()->user()->id)->value('otp_token');
 
@@ -82,6 +88,8 @@ class InternationalTransferController extends Controller
             'receipient_bank' => $receipient_bank,
             'amount' => $amount * 100,
             'description' => $description,
+            'account_type' => $account_type,
+            'bank_country' => $bank_country,
             'status' => 'confirmed'
         ]);
 
