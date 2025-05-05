@@ -220,7 +220,7 @@
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                                     data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
-                                        <img src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('dash/assets/img/avatars/1.png') }}"
+                                        <img src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('dash/assets/img/avatars/placeholder.png') }}"
                                             alt="" class="w-px-40 h-auto rounded-circle">
                                     </div>
                                 </a>
@@ -230,7 +230,7 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
-                                                        <img src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('dash/assets/img/avatars/1.png') }}"
+                                                        <img src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('dash/assets/img/avatars/placeholder.png') }}"
                                                             alt="" class="w-px-40 h-auto rounded-circle">
                                                     </div>
                                                 </div>
