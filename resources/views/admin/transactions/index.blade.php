@@ -20,6 +20,7 @@
                     <th>#</th>
                     <th>User</th>
                     <th>Amount</th>
+                    <th>Type</th>
                     <th>Method</th>
                     <th>Invoice</th>
                     <th>Status</th>
@@ -56,6 +57,7 @@
                       <td>#</td>
                       <td>{{ $deposit->user->fullname }}</td>
                       <td>${{ $deposit->amount / 100 }}</td>
+                      <td>Deposit</td>
                       <td>{{ $deposit->payment_method }}</td>
                       <td>{{ $deposit->hash }}</td>
                       <td>{{ $deposit->confirmation_status }}</td>
