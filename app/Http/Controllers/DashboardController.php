@@ -18,12 +18,12 @@ class DashboardController extends Controller
 
             $request->session()->regenerateToken();
 
-            return redirect('/login')->with('message', 'Your account has been suspended due to an issue! Please reach out support to resolve this.');
+            return redirect('/login')->with('message', 'Your account has been suspended! Kindly reach out to the support team for further resolutions.');
         }
         
         $deposits = Deposit::where('user_id', auth()->user()->id)->get();
         $transfers = Transfer::where('user_id', auth()->user()->id)->get();
-        
+
         return view('dashboard', [
             'deposits' => $deposits,
             'transfers' => $transfers,
