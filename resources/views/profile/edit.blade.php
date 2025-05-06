@@ -20,28 +20,27 @@
                          <div class="card-body">
                              <form action="/profile/profile-picture" method="POST" enctype="multipart/form-data">
                                @csrf
-                                 <div class="d-flex align-items-start align-items-sm-center gap-4">
-                                     <img src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('dash/assets/img/avatars/placeholder.png') }}" alt="user-avatar"
+                                 {{-- <div class="d-flex align-items-start align-items-sm-center gap-4">
+                                     
+                                 </div> --}}
+                                 <img src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('dash/assets/img/avatars/placeholder.png') }}" alt="user-avatar"
                                          class="d-block rounded" id="uploadedAvatar" width="100"
                                          height="100">
  
                                      <div class="button-wrapper">
-                                         <label for="upload" class="btn btn-primary me-2 mb-4"
+                                         <label for="upload" class="btn btn-outline-secondary me-2 mb-2 mt-4 d-block" style="width: fit-content;"
                                              tabindex="0">
-                                             <span style="font-size: 12px;">Select Photo</span>
-                                             <input type="file" name="profile_photo" id="upload"
-                                                 class="account-file-input"
-                                                 accept="image/png, image/jpeg" hidden="">
+                                             <input style="font-size: 10px;" type="file" name="profile_picture" id="upload"
+                                                 accept="image/png, image/jpeg">
                                          </label>
                                          <button name="upload_photo" type="submit"
-                                             class="btn btn-outline-secondary account-image-reset mb-4">
+                                             class="btn btn-primary account-image-reset mb-4 d-block fw-bold" style="font-size: 12px;">
                                              <span>Submit</span>
                                          </button>
  
-                                         <p class="text-muted mb-0" style="font-size: 12px;">Allowed JPEG, JPG or PNG. Max size of
+                                         <p class="text-muted mb-0" style="font-size: 10px;">Allowed JPEG, JPG or PNG. Max size of
                                              800K</p>
                                      </div>
-                                 </div>
                              </form>
                          </div>
  

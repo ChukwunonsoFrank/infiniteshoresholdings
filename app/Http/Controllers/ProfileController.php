@@ -42,7 +42,8 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function password(Request $request) {
+    public function password(Request $request)
+    {
         $user_id = auth()->user()->id;
 
         $request->validate([
@@ -75,22 +76,20 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function profile_picture(Request $request) 
+    public function profile_picture(Request $request)
     {
         $user_id = auth()->user()->id;
 
-        if($request->hasFile('profile-picture')) {
-            $profile_picture_path = $request->file('profile-picture')->store('profile-picture', 'public');
-            User::where('id', $user_id)->update([
-                'profile_picture' => $profile_picture_path
-            ]);
-        }
+        $profile_picture_path = $request->file('profile_picture')->store('profile_picture', 'public');
+
+        User::where('id', $user_id)->update([
+            'profile_picture' => $profile_picture_path
+        ]);
 
         $user = User::where('id', $user_id)->first();
+        
         return view('profile.edit', [
             'user' => $user,
         ]);
-
     }
-
 }
