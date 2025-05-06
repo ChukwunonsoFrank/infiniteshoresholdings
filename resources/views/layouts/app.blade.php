@@ -221,7 +221,7 @@
                                     data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
                                         <img src="{{ auth()->user()->profile_picture ? 'https://infiniteshoresholdings.com/storage/' . auth()->user()->profile_picture : asset('dash/assets/img/avatars/placeholder.png') }}"
-                                            alt="" class="w-px-40 h-auto rounded-circle">
+                                            alt="" class="rounded-circle">
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -231,7 +231,7 @@
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
                                                         <img src="{{ auth()->user()->profile_picture ? 'https://infiniteshoresholdings.com/storage/' . auth()->user()->profile_picture : asset('dash/assets/img/avatars/placeholder.png') }}"
-                                                            alt="" class="w-px-40 h-auto rounded-circle">
+                                                            alt="" class="rounded-circle">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
