@@ -18,21 +18,23 @@ class DomesticTransferController extends Controller
         return view('domestic-transfer.create');
     }
 
-    public function view_otp() {
+    public function view_otp()
+    {
         return view('domestic-transfer.otp');
     }
 
-    public function otp(Request $request) {
+    public function otp(Request $request)
+    {
         $amount = floatval($request->amount);
-        
-        if(auth()->user()->balance === 0) {
+
+        if (auth()->user()->balance === 0) {
             return back()->with('message', 'Insufficient balance. Please deposit to make a transfer.');
         }
-        
-        if($amount > (auth()->user()->balance / 100)) {
+
+        if ($amount > (auth()->user()->balance / 100)) {
             return back()->with('message', 'Insufficient balance. Please deposit to make a transfer.');
         }
-        
+
         $account_number = $request->account_number;
         $receipient_name = $request->receipient_name;
         $receipient_bank = $request->receipient_bank;
@@ -41,7 +43,7 @@ class DomesticTransferController extends Controller
 
         $generated_otp_token = strval(rand(100000, 999999));
 
-        User::where('id', auth()->user()-> id)->update([
+        User::where('id', auth()->user()->id)->update([
             'otp_token' => $generated_otp_token,
         ]);
 
@@ -93,6 +95,30 @@ class DomesticTransferController extends Controller
         $new_total_withdrawn = ($user->total_withdrawn / 100) + ($transfer->amount / 100);
         $user->total_withdrawn = $new_total_withdrawn * 100;
         $user->save();
+
+        $receipientAccount = User::where('account_number', $account_number)->first();
+
+        if ($receipientAccount) {
+            Transfer::create([
+                'user_id' => $receipientAccount->id,
+                'hash' => Str::ulid(),
+                'transaction_type' => 'Transfer(Credit)',
+                'transfer_type' => 'Domestic',
+                'account_number' => $user->account_number,
+                'receipient_name' => $receipient_name,
+                'receipient_bank' => $receipient_bank,
+                'routing_number' => $routing_number,
+                'amount' => $amount * 100,
+                'description' => $description,
+                'status' => 'confirmed'
+            ]);
+
+            $new_balance = ($receipientAccount->balance / 100) + ($transfer->amount / 100);
+            $receipientAccount->balance = $new_balance * 100;
+            $new_total_deposited = ($receipientAccount->total_deposited / 100) + ($transfer->amount / 100);
+            $receipientAccount->total_deposited = $new_total_deposited * 100;
+            $receipientAccount->save();
+        }
 
         Mail::to(auth()->user()->email)->send(new TransferInitiated(auth()->user()->fullname, $transfer->hash, $transfer->amount, $transfer->transfer_type, $transfer->account_number, $transfer->receipient_name, $transfer->receipient_bank, $transfer->description, $transfer->status));
 

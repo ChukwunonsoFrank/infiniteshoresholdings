@@ -57,7 +57,7 @@
                                                         style="cursor:pointer;">
                                                         <td style="font-size: 13px;">{{ $transfer->created_at }}</td>
                                                         <td style="font-size: 13px;">{{ $transfer->hash }}</td>
-                                                        <td style="font-size: 13px;">Transfer</td>
+                                                        <td style="font-size: 13px;">{{ $transfer->transaction_type }}</td>
                                                         <td style="font-size: 13px;">${{ $transfer->amount / 100 }}</td>
                                                         <td style="font-size: 13px;">
                                                             <div class="badge small bg-success">

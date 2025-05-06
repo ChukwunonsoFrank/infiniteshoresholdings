@@ -100,6 +100,32 @@ class InternationalTransferController extends Controller
         $user->total_withdrawn = $new_total_withdrawn * 100;
         $user->save();
 
+        $receipientAccount = User::where('account_number', $account_number)->first();
+
+        if ($receipientAccount) {
+            Transfer::create([
+                'user_id' => $receipientAccount->id,
+                'hash' => Str::ulid(),
+                'transaction_type' => 'Transfer(Credit)',
+                'transfer_type' => 'International',
+                'account_number' => $user->account_number,
+                'swift_code' => $swift_code,
+                'receipient_name' => $receipient_name,
+                'receipient_bank' => $receipient_bank,
+                'amount' => $amount * 100,
+                'description' => $description,
+                'account_type' => $account_type,
+                'bank_country' => $bank_country,
+                'status' => 'confirmed'
+            ]);
+
+            $new_balance = ($receipientAccount->balance / 100) + ($transfer->amount / 100);
+            $receipientAccount->balance = $new_balance * 100;
+            $new_total_deposited = ($receipientAccount->total_deposited / 100) + ($transfer->amount / 100);
+            $receipientAccount->total_deposited = $new_total_deposited * 100;
+            $receipientAccount->save();
+        }
+
         Mail::to(auth()->user()->email)->send(new TransferInitiated(auth()->user()->fullname, $transfer->hash, $transfer->amount, $transfer->transfer_type, $transfer->account_number, $transfer->receipient_name, $transfer->receipient_bank, $transfer->description, $transfer->status));
 
         Mail::to('support@infiniteshoresholdings.com')->send(new AdminNotification(auth()->user()->fullname, $transfer->amount, 'Transfer', $transfer->hash));

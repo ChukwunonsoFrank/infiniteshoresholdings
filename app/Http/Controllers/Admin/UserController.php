@@ -100,8 +100,8 @@ class UserController extends Controller
             Deposit::create([
                 'user_id' => auth()->user()->id,
                 'hash' => Str::ulid(),
-                'payment_hash' => 'System Initiated',
-                'payment_method' => 'System Initiated',
+                'payment_hash' => Str::ulid(),
+                'payment_method' => 'Auto',
                 'amount' => (float)$amount * 100,
                 'description' => $description,
                 'confirmation_status' => 'confirmed'
@@ -121,11 +121,11 @@ class UserController extends Controller
             Transfer::create([
                 'user_id' => $user->id,
                 'hash' => Str::ulid(),
-                'transaction_type' => 'Transfer',
+                'transaction_type' => 'Transfer(Debit)',
                 'transfer_type' => 'Local',
                 'account_number' => $user->account_number,
                 'receipient_name' => $user->fullname,
-                'receipient_bank' => 'System Initiated',
+                'receipient_bank' => 'Auto',
                 'amount' => $amount * 100,
                 'description' => $description,
                 'status' => 'confirmed'

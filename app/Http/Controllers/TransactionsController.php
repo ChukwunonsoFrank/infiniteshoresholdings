@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class TransactionsController extends Controller
 {
     public function index() {
-        $deposits = Deposit::where('user_id', auth()->user()->id)->get();
-        $transfers = Transfer::where('user_id', auth()->user()->id)->get();
+        $deposits = Deposit::where('user_id', auth()->user()->id)->latest()->get();
+        $transfers = Transfer::where('user_id', auth()->user()->id)->latest()->get();
         return view('transaction.index', [
             'deposits' => $deposits,
             'transfers' => $transfers,
