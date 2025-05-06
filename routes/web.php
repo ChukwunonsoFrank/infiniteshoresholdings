@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\PendingInvestmentsController;
 use App\Http\Controllers\Admin\PendingWithdrawalsController;
 use App\Http\Controllers\Admin\AdminTransactionsController;
 use App\Http\Controllers\Admin\ConfirmedWithdrawalsController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MarketingPagesController;
 
 /*
@@ -40,6 +41,8 @@ Route::get('/', [MarketingPagesController::class, 'home'])->name('home');
 Route::get('/about', [MarketingPagesController::class, 'about'])->name('about');
 Route::get('/services', [MarketingPagesController::class, 'services'])->name('services');
 Route::get('/contact', [MarketingPagesController::class, 'contact'])->name('contact');
+
+Route::get('/storage/{path}', [ImageController::class, 'show'])->where('path', '.*');
 
 Route::get('/link-storage', function () {
     Artisan::call('storage:link');
