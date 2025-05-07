@@ -33,7 +33,6 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -73,19 +72,6 @@
                                             <a href="/admin/users/suspend?id={{ $user->id }}"
                                                 class="btn btn-sm btn-danger">
                                                 Disable Transfers
-                                            </a>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($user->otp_disabled)
-                                            <a href="/admin/users/suspend?id={{ $user->id }}"
-                                                class="btn btn-sm btn-success">
-                                                Enable OTP
-                                            </a>
-                                        @else
-                                            <a href="/admin/users/suspend?id={{ $user->id }}"
-                                                class="btn btn-sm btn-danger">
-                                                Disable OTP
                                             </a>
                                         @endif
                                     </td>
