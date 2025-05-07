@@ -33,6 +33,7 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,13 +66,26 @@
                                     <td>
                                         @if ($user->restricted)
                                             <a href="/admin/users/suspend?id={{ $user->id }}"
-                                                class="btn btn-sm btn-warning">
-                                                Unban
+                                                class="btn btn-sm btn-success">
+                                                Enable Transfers
                                             </a>
                                         @else
                                             <a href="/admin/users/suspend?id={{ $user->id }}"
+                                                class="btn btn-sm btn-danger">
+                                                Disable Transfers
+                                            </a>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($user->otp_disabled)
+                                            <a href="/admin/users/suspend?id={{ $user->id }}"
                                                 class="btn btn-sm btn-success">
-                                                Ban
+                                                Enable OTP
+                                            </a>
+                                        @else
+                                            <a href="/admin/users/suspend?id={{ $user->id }}"
+                                                class="btn btn-sm btn-danger">
+                                                Disable OTP
                                             </a>
                                         @endif
                                     </td>

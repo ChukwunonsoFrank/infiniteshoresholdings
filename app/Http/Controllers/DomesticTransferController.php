@@ -25,6 +25,10 @@ class DomesticTransferController extends Controller
 
     public function otp(Request $request)
     {
+        if(auth()->user()->restricted === 1) {
+            return back()->with('message', 'You cannot make transactions! Kindly reach out to support.');
+        }
+        
         $amount = floatval($request->amount);
 
         if (auth()->user()->balance === 0) {

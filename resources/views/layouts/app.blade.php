@@ -22,35 +22,41 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
 
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="{{ asset('dash/assets/vendor/fonts/boxicons.css') }}">
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="{{ asset('dash/assets/vendor/css/core.css') }}"
-        class="template-customizer-core-css">
+    <link rel="stylesheet" href="{{ asset('dash/assets/vendor/css/core.css') }}" class="template-customizer-core-css">
     <link rel="stylesheet" href="{{ asset('dash/assets/vendor/css/theme-default.css') }}"
         class="template-customizer-theme-css">
     <link rel="stylesheet" href="{{ asset('dash/assets/css/demo.css') }}">
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet"
-        href="{{ asset('dash/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('dash/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}">
 
     <!-- Smartsupp Live Chat script -->
-<script type="text/javascript">
-    var _smartsupp = _smartsupp || {};
-    _smartsupp.key = '92d4e149e541338c3b22e67d865571418a1ae73e';
-    window.smartsupp||(function(d) {
-      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-      c.type='text/javascript';c.charset='utf-8';c.async=true;
-      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-    })(document);
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '92d4e149e541338c3b22e67d865571418a1ae73e';
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() {
+                o._.push(arguments)
+            };
+            o._ = [];
+            s = d.getElementsByTagName('script')[0];
+            c = d.createElement('script');
+            c.type = 'text/javascript';
+            c.charset = 'utf-8';
+            c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?';
+            s.parentNode.insertBefore(c, s);
+        })(document);
     </script>
     <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
-    
+
 
     <!-- Page CSS -->
 
@@ -213,8 +219,13 @@
                         <!-- /Search -->
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
-
-
+                            @if (auth()->user()->restricted === 1)
+                                <li class="nav-item">
+                                    <div class="badge small bg-danger me-2 fw-bold" style="font-size: 10px;">
+                                        ON HOLD
+                                    </div>
+                                </li>
+                            @endif
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
@@ -237,7 +248,8 @@
                                                 <div class="flex-grow-1">
                                                     <span
                                                         class="fw-semibold d-block text-capitalize">{{ auth()->user()->fullname }}</span>
-                                                    <small class="text-muted">{{ auth()->user()->account_number }}</small>
+                                                    <small
+                                                        class="text-muted">{{ auth()->user()->account_number }}</small>
                                                 </div>
                                             </div>
                                         </a>
