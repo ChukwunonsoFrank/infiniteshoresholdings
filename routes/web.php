@@ -111,6 +111,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware('admin')->group(function () {
     Route::get('/admin/users', [UserController::class, 'index']);
     Route::get('/admin/users/suspend', [UserController::class, 'suspend']);
+    Route::get('/admin/users/onhold', [UserController::class, 'onhold']);
+    Route::get('/admin/users/toggleotp', [UserController::class, 'toggleotp']);
     Route::get('/admin/users/delete', [UserController::class, 'delete']);
     Route::get('/admin/users/debit-or-credit', [UserController::class, 'create_debit_or_credit']);
     Route::post('/admin/users/debit-or-credit', [UserController::class, 'store_debit_or_credit']);

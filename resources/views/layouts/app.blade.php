@@ -219,13 +219,13 @@
                         <!-- /Search -->
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
-                            @if (auth()->user()->restricted === 1)
+                            {{-- @if (auth()->user()->restricted === 1)
                                 <li class="nav-item">
                                     <div class="badge small bg-danger me-2 fw-bold" style="font-size: 10px;">
                                         ON HOLD
                                     </div>
                                 </li>
-                            @endif
+                            @endif --}}
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"

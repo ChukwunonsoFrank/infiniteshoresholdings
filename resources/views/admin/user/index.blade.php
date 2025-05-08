@@ -75,6 +75,32 @@
                                             </a>
                                         @endif
                                     </td>
+                                    <td>
+                                        @if ($user->on_hold)
+                                            <a href="/admin/users/onhold?id={{ $user->id }}"
+                                                class="btn btn-sm btn-success">
+                                                Remove Hold
+                                            </a>
+                                        @else
+                                            <a href="/admin/users/onhold?id={{ $user->id }}"
+                                                class="btn btn-sm btn-danger">
+                                                Place On Hold
+                                            </a>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($user->otp_disabled)
+                                            <a href="/admin/users/toggleotp?id={{ $user->id }}"
+                                                class="btn btn-sm btn-success">
+                                                Enable OTP
+                                            </a>
+                                        @else
+                                            <a href="/admin/users/toggleotp?id={{ $user->id }}"
+                                                class="btn btn-sm btn-danger">
+                                                Disable OTP
+                                            </a>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -28,7 +28,15 @@ class LocalTransferController extends Controller
         if(auth()->user()->restricted === 1) {
             return back()->with('message', 'You cannot make transactions! Kindly reach out to support.');
         }
-        
+
+        if(auth()->user()->otp_disabled === 1) {
+            return back()->with('message', 'OTP is currently disabled for your account. Kindly reach out to support');
+        }
+
+        if(auth()->user()->on_hold === 1) {
+            return back()->with('message', 'Your account is on hold. Kindly reach out to support');
+        }
+
         $amount = floatval($request->amount);
 
         if (auth()->user()->balance === 0) {

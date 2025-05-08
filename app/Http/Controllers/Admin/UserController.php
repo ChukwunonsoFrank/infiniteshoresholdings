@@ -54,6 +54,32 @@ class UserController extends Controller
         ]);
     }
 
+    public function onhold(Request $request)
+    {
+        $user_id = $request->id;
+        $user = User::find($user_id);
+        $user->on_hold = !$user->on_hold;
+        $user->save();
+
+        $users = User::all();
+        return view('admin.user.index', [
+            'users' => $users
+        ]);
+    }
+
+    public function toggleotp(Request $request)
+    {
+        $user_id = $request->id;
+        $user = User::find($user_id);
+        $user->otp_disabled = !$user->otp_disabled;
+        $user->save();
+
+        $users = User::all();
+        return view('admin.user.index', [
+            'users' => $users
+        ]);
+    }
+
     public function store(Request $request)
     {
         $user_id = $request->id;
