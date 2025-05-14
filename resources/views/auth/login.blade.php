@@ -45,7 +45,7 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="default-btn">Sign in</button>
+                            <button type="submit" class="default-btn">Proceed</button>
                         </form>
                     </div>
                 </div>

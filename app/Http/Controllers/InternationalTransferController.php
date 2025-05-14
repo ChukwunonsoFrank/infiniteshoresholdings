@@ -27,7 +27,7 @@ class InternationalTransferController extends Controller
         }
 
         if(auth()->user()->otp_disabled === 1) {
-            return back()->with('message', 'OTP is currently disabled for your account. Kindly reach out to support');
+            return back()->with('message', 'OTP is currently disabled for transactions on your account. Kindly reach out to support');
         }
 
         $amount = floatval($request->amount);

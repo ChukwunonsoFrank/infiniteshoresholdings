@@ -8,31 +8,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <!-- Animate CSS -->
-    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
     <!-- Meanmenu CSS -->
-    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.css') }}">
     <!-- Boxicons CSS -->
-    <link rel="stylesheet" href="assets/css/boxicons.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/boxicons.min.css') }}">
     <!-- Flaticon CSS -->
-    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
     <!-- Nice Select CSS -->
-    <link rel="stylesheet" href="assets/css/nice-select.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/nice-select.min.css') }}">
     <!-- Owl Carousel CSS -->
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
     <!-- Owl Carousel Default CSS -->
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}">
     <!-- Odometer CSS -->
-    <link rel="stylesheet" href="assets/css/odometer.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/odometer.min.css') }}">
     <!-- Magnific Popup CSS -->
-    <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.min.css') }}">
     <!-- Style CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <!-- Dark CSS -->
-    <link rel="stylesheet" href="assets/css/dark.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/dark.css') }}">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 
     <title>Infinite Shores Holdings - Online Banking Services</title>
 
@@ -147,8 +147,8 @@
                     </div>
                     <div class="logo">
                         <a href="index.html">
-                            <img src="assets/img/logo-1.png" class="black-logo" alt="image">
-                            <img src="assets/img/white-logo.png" class="white-logo" alt="image">
+                            <img src="{{ asset('assets/img/logo-1.png') }}" class="black-logo" alt="image">
+                            <img src="{{ asset('assets/img/white-logo.png') }}" class="white-logo" alt="image">
                         </a>
                     </div>
                 </div>
@@ -159,8 +159,8 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        <img src="assets/img/logo-1.png" class="black-logo" alt="image">
-                        <img src="assets/img/white-logo.png" class="white-logo" alt="image">
+                        <img src="{{ asset('assets/img/logo-1.png') }}" class="black-logo" alt="image">
+                        <img src="{{ asset('assets/img/white-logo.png') }}" class="white-logo" alt="image">
                     </a>
 
                     <div class="mean-push"></div>
@@ -350,31 +350,31 @@
     <!-- End Go Top Area -->
 
     <!-- Jquery Slim JS -->
-    <script src="assets/js/jquery.min.js"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <!-- Bootstrap JS -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Meanmenu JS -->
-    <script src="assets/js/jquery.meanmenu.js"></script>
+    <script src="{{ asset('assets/js/jquery.meanmenu.js') }}"></script>
     <!-- Nice Select JS -->
-    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
     <!-- Owl Carousel JS -->
-    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
     <!-- Magnific Popup JS -->
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
     <!-- Odometer JS -->
-    <script src="assets/js/odometer.min.js"></script>
+    <script src="{{ asset('assets/js/odometer.min.js') }}"></script>
     <!-- Jquery Appear JS -->
-    <script src="assets/js/jquery.appear.min.js"></script>
+    <script src="{{ asset('assets/js/jquery.appear.min.js') }}"></script>
     <!-- Ajaxchimp JS -->
-    <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="{{ asset('assets/js/jquery.ajaxchimp.min.js') }}"></script>
     <!-- Form Validator JS -->
-    <script src="assets/js/form-validator.min.js"></script>
+    <script src="{{ asset('assets/js/form-validator.min.js') }}"></script>
     <!-- Contact JS -->
-    <script src="assets/js/contact-form-script.js"></script>
+    <script src="{{ asset('assets/js/contact-form-script.js') }}"></script>
     <!-- Wow JS -->
-    <script src="assets/js/wow.min.js"></script>
+    <script src="{{ asset('assets/js/wow.min.js') }}"></script>
     <!-- Custom JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
 
 </body>
 

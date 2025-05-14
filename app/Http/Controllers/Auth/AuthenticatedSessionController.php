@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Mail\SendLoginOTPToken;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -44,15 +47,24 @@ class AuthenticatedSessionController extends Controller
         $result = $response->json();
 
         if ($response->successful() && $result['success'] == true) {
-            $request->authenticate();
+            try {
+                $otp = strval(rand(100000, 999999));
 
-            $request->session()->regenerate();
+                User::where('account_number', $request->account_number)->update([
+                    'otp_token' => $otp
+                ]);
 
-            if ($request->user()->is_admin == 1) {
-                return redirect('/admin/users');
+                $recipientAddress = User::where('account_number', $request->account_number)->pluck('email');
+
+                Mail::to($recipientAddress)->send(new SendLoginOTPToken($otp));
+
+                return view('auth.otp', [
+                    'account_number' => $request->account_number,
+                    'password' => $request->password,
+                ]);
+            } catch (\Exception $e) {
+                return back()->with('message', $e->getMessage());
             }
-
-            return redirect()->intended(RouteServiceProvider::HOME);
         } else {
             $request->session()->flash('message', "Please confirm you are not a robot");
             return redirect()->back();
