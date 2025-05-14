@@ -22,15 +22,19 @@ class LoginOTPController extends Controller
         $user = User::where('account_number', $request->account_number)->first();
 
         if ($token === $user['otp_token']) {
-            $request->authenticate();
+            try {
+                $request->authenticate();
 
-            $request->session()->regenerate();
+                $request->session()->regenerate();
 
-            if ($user['is_admin'] === 1) {
-                return redirect('/admin/users');
+                if ($user['is_admin'] === 1) {
+                    return redirect('/admin/users');
+                }
+
+                return redirect()->intended(RouteServiceProvider::HOME);
+            } catch (\Exception $e) {
+                return back()->with('message', $e->getMessage());
             }
-
-            return redirect()->intended(RouteServiceProvider::HOME);
         } else {
             return back()->with('message', 'Invalid OTP Token');
         }
