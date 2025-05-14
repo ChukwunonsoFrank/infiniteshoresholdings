@@ -26,7 +26,7 @@ class LoginOTPController extends Controller
 
             $request->session()->regenerate();
 
-            if (auth()->user()->is_admin == 1) {
+            if ($user['is_admin'] === 1) {
                 return redirect('/admin/users');
             }
 
